@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance & Habit Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; font-family: sans-serif; }
+        .expense { border-left: 4px solid #ef4444; }
+        .income { border-left: 4px solid #22c55e; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-slate-800 p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-700">
+        <h1 class="text-2xl font-bold text-center mb-6 text-purple-400">Трекер баланса и привычек</h1>
+        
+          Баланс 
+        <div class="text-center mb-6">
+            <p class="text-slate-400 text-sm uppercase">Текущий баланс</p>
+            <h2 id="balance-display" class="text-4xl font-bold mt-1">0 ₽</h2>
+        </div>
+
+        <-- Трекер привычки -->
+        <div class="bg-slate-700/50 p-4 rounded-xl mb-6 flex justify-between items-center border border-slate-600">
+            <div>
+                <p class="font-medium text-sm">Привычка: Кодить каждый день</p>
+                <p class="text-xs text-slate-400">Дней подряд: <span id="habit-count" class="text-white font-bold text-lg">0</span></p>
+            </div>
+            <button onclick="incrementHabit()" class="bg-purple-600 hover:bg-purple-500 w-10 h-10 rounded-lg font-bold text-xl transition-colors">+</button>
+        </div>
+
+        <!-- Форма добавления -->
+        <form id="trans-form" class="mb-6 space-y-3">
+            <input type="text" id="trans-text" placeholder="За что (например: Кофе)" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 focus:outline-none focus:border-purple-500">
+            <input type="number" id="trans-amount" placeholder="Сумма (с минусом, если расход)" class="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 focus:outline-none focus:border-purple-500">
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg transition-colors">Добавить</button>
+        </form>
+
+        <!-- История -->
+        <h3 class="text-lg font-semibold border-b border-slate-700 pb-2 mb-4">История</h3>
+        <ul id="history-list" class="space-y-3 max-h-48 overflow-y-auto pr-2">
+            <!-- Сюда JS будет добавлять li -->
+        </ul>
+    </div>
+
+    <!-- Подключаем нашу логику -->
+    <script src="app.js"></script>
+</body>
+</html>
